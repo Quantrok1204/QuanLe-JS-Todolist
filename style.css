@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(to right, #e22865, #37adcd);
+}
+
+h2 {
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    width: 33%;
+    text-align: center;
+    margin-left: 25px;
+    margin-bottom: -4px;
+    background-image: linear-gradient(to right, #e22865, #37adcd);
+    color: white;
+}
+
+.fa-clipboard-check:before {
+    color: white;
+}
+
+.wrapper {
+    max-width: 450px;
+    padding: 15px 0 30px;
+    margin: 80px auto;
+    background-image: linear-gradient(to right, rgb(223, 223, 32), #40ec30);
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.task-input {
+    height: 52px;
+    padding: 0 25px;
+    position: relative;
+}
+
+.task-input text {
+    text-align: center;
+}
+
+.task-input input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 0 20px 0 53px;
+    border: 1px solid #999;
+}
+
+.task-input input:focus,
+.task-input input.active {
+    padding-left: 52px;
+    border: 2px solid #3C87FF;
+}
+
+.task-input input::placeholder {
+    color: #bfbfbf;
+}
+
+.controls,
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.controls {
+    padding: 12px 25px;
+    border-bottom: 1px solid #ccc;
+}
+
+.list span {
+    margin: 0 8px;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.781);
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.list span:first-child {
+    margin-left: 0;
+}
+
+.list span.active {
+    color: #0865fa;
+}
+
+.clear {
+    border: none;
+    opacity: 0.6;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 7px 5px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+    pointer-events: none;
+    transition: transform 0.25s ease;
+    background: linear-gradient(135deg, #1798fb 0%, #2D5CFE 100%);
+    font-weight: bolder;
+}
+
+.clear:hover {
+    background: rgb(231, 210, 19);
+    color: black;
+    font-weight: bolder;
+}
+
+.clear.active {
+    opacity: 0.9;
+    pointer-events: auto;
+}
+
+.clear:active {
+    transform: scale(0.93);
+}
+
+.task-box {
+    margin-top: 20px;
+    margin-right: 5px;
+    padding: 0 20px 10px 25px;
+}
+
+.task-box.overflow {
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.task-box::-webkit-scrollbar {
+    width: 5px;
+}
+
+.task-box .task {
+    list-style: none;
+    font-size: 17px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    align-items: flex-start;
+    border-bottom: 1px solid #ccc;
+}
+
+.task-box .task:last-child {
+    margin-bottom: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.task-box .task label {
+    display: flex;
+    align-items: flex-start;
+}
+
+span {
+    font-weight: 500;
+}
+
+.task label input {
+    margin-top: 7px;
+    accent-color: #3C87FF;
+}
+
+.task p {
+    font-weight: 500;
+}
+
+.task label p {
+    user-select: none;
+    margin-left: 12px;
+    word-wrap: break-word;
+}
+
+.task label p.checked {
+    text-decoration: line-through;
+}
+
+.task-box .settings {
+    position: relative;
+}
+
+.settings :where(i,
+li) {
+    cursor: pointer;
+}
+
+.settings .task-menu {
+    z-index: 10;
+    right: -5px;
+    bottom: -65px;
+    padding: 5px 0;
+    background: white;
+    position: absolute;
+    border-radius: 4px;
+    transform: scale(0);
+    transform-origin: top right;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.15s;
+}
+
+.task-menu.show {
+    transform: scale(1);
+}
+
+.task-menu li {
+    height: 25px;
+    font-size: 16px;
+    margin-bottom: 2px;
+    padding: 17px 15px;
+    cursor: pointer;
+    justify-content: flex-start;
+}
+
+.task-menu li:last-child {
+    margin-bottom: 0;
+}
+
+.settings li:hover {
+    background: #ccc;
+}
+
+.settings li i {
+    padding-right: 8px;
+}
+
+::before {
+    color: black;
+}
+
+.fa-trash:before {
+    color: red;
+}
+
+.fa-pen:before {
+    color: rgb(255, 145, 0);
+}
