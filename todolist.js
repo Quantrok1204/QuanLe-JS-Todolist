@@ -27,7 +27,7 @@ function showTodo(list) {
                         <p class="${completed}">${todo.name}</p>
                         </label>
                         <div class="settings">
-                        <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
+                        <i onclick="showMenu(this)" class="uil uil-ellipsis-h" id="showmenu"></i>
                         <ul class="task-menu">
                         <li onclick='editTask(${id}, "${todo.name}")'><i class="fas fa-pen"></i>Sửa</li><hr>
                         <li onclick='deleteTask(${id}, "${list}")'><i class="fas fa-trash"></i>Xóa</li>
@@ -48,7 +48,7 @@ function showMenu(selectedTask) {
     let menuDiv = selectedTask.parentElement.lastElementChild;
     menuDiv.classList.add("show");
     document.addEventListener("click", e => {
-        if (e.target.tagName != "I" || e.target != selectedTask) {
+        if (e.target.id != "showmenu" || e.target != selectedTask) {
             menuDiv.classList.remove("show");
         }
     });
