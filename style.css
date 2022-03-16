@@ -179,6 +179,10 @@ span {
     user-select: none;
     margin-left: 12px;
     word-wrap: break-word;
+    cursor: pointer;
+    width: 350px;
+    text-overflow: clip;
+    overflow: hidden;
 }
 
 .task label p.checked {
