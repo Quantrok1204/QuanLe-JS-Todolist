@@ -23,8 +23,8 @@ function showTodo(list) {
             if (list == todo.status || list == "all") {
                 liTag += `<li class="task">
                         <label for="${id}">
-                        <input onclick="updateStatus(this)" type="checkbox" id="${id}" ${completed}>
-                        <p class="${completed}">${todo.name}</p>
+                        <input class="checkhour" onclick="updateStatus(this)" type="checkbox" id="${id}" ${completed}>
+                        <p class="pDesc ${completed} NameToDo">${todo.name}</p>
                         </label>
                         <div class="settings">
                         <i onclick="showMenu(this)" class="uil uil-ellipsis-h" id="showmenu"></i>
@@ -52,6 +52,33 @@ function showMenu(selectedTask) {
             menuDiv.classList.remove("show");
         }
     });
+}
+
+function selectAll(selectedTask) {
+    var checkboxes = document.getElementsByTagName('input');
+    var ps = document.getElementsByClassName('pDesc');
+    if (selectedTask.checked) {
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                checkboxes[i].checked = true;
+            }
+            ps[i].classList.add("checked");
+        }
+        todos.forEach((todo, id) => {
+            todo.status = "completed";
+        });
+    } else {
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                checkboxes[i].checked = false;
+            }
+            ps[i].classList.remove("checked");
+        }
+        todos.forEach((todo, id) => {
+            todo.status = "active";
+        });
+    }
+    localStorage.setItem("todo-list", JSON.stringify(todos))
 }
 
 function updateStatus(selectedTask) {
@@ -93,7 +120,10 @@ taskInput.addEventListener("keyup", e => {
     if (e.key == "Enter" && userTask) {
         if (!isEditTask) {
             todos = !todos ? [] : todos;
-            let taskInfo = { name: userTask, status: "active" };
+            let taskInfo = {
+                name: userTask,
+                status: "active"
+            };
             todos.push(taskInfo);
         } else {
             isEditTask = false;
