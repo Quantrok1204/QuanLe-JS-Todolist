@@ -131,6 +131,8 @@ li {
     margin-top: 20px;
     margin-right: 5px;
     padding: 0 20px 10px 25px;
+    font-weight: bolder;
+    font-size: 18px;
 }
 
 .task-box.overflow {
@@ -247,4 +249,7 @@ li) {
 
 .fa-pen:before {
     color: rgb(255, 145, 0);
+}
+.fa-check:before {
+    color: #f12a0f
 }
