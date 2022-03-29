@@ -62,7 +62,7 @@ function selectAll(selectedTask) {
             if (checkboxes[i].type == 'checkbox') {
                 checkboxes[i].checked = true;
             }
-            ps[i].classList.add("checked");
+            ps[i]?.classList.add("checked");
         }
         todos.forEach((todo, id) => {
             todo.status = "completed";
@@ -72,7 +72,7 @@ function selectAll(selectedTask) {
             if (checkboxes[i].type == 'checkbox') {
                 checkboxes[i].checked = false;
             }
-            ps[i].classList.remove("checked");
+            ps[i]?.classList.remove("checked");
         }
         todos.forEach((todo, id) => {
             todo.status = "active";
@@ -90,7 +90,12 @@ function updateStatus(selectedTask) {
         taskName.classList.remove("checked");
         todos[selectedTask.id].status = "active";
     }
+    let todosUncheck = todos.filter(s => s.status == 'active')
+    if(todosUncheck) {
+        document.getElementsByClassName('select-all')[0].checked = false
+    }
     localStorage.setItem("todo-list", JSON.stringify(todos))
+
 }
 
 function editTask(taskId, textName) {
@@ -134,3 +139,4 @@ taskInput.addEventListener("keyup", e => {
         showTodo(document.querySelector("span.active").id);
     }
 });
+
